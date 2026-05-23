@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Saúde e Cuidado - Guia Prático</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="gov-bar">
+        <div><strong>Medicina PUC Minas</strong></div>
+        <div class="right-links">
+            <a href="https://www.pucminas.br/destaques/Paginas/default.aspx" target="_blank" rel="noopener noreferrer"><i class="fas fa-users"></i> Portal</a>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="header-brand-wrapper">
+            <img src="logo.ico" alt="Logo PUC Minas" class="header-logo">
+            
+            <div class="brand">
+                <h1>Portal do Cuidador</h1>
+                <span>Cuidando de quem cuida</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner-container">
+        <button class="slide-btn btn-prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="slide-btn btn-next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="slider-wrapper">
+            <div class="slider-track" id="sliderTrack">
+    
+    <div class="slide-card card-1">
+        <div>
+            <h3>Depressão</h3>
+            <p class="font-bold">O que é e principais sinais:</p>
+            <ul>
+                <li>Tristeza persistentemente grave</li>
+                <li>Dificuldade de concentração e esquecimentos</li>
+                <li>Alterações no sono e falta de energia</li>
+            </ul>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="0">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-2">
+        <div>
+            <h3>Burnout</h3>
+            <p class="font-bold">O que é?</p>
+            <ul>
+                <li>Esgotamento físico, emocional e mental<span style="display:none;"></span></li>
+                <li>Causado pelo estresse crônico<span style="display:none;"></span></li>
+                <li>Exaustão extrema devido à sobrecarga<span style="display:none;"></span></li>
+            </ul>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="1">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-3">
+        <div>
+            <h3>Ansiedade, estresse e exaustão</h3>
+            <p>Descubra como gerenciar a sobrecarga emocional no dia a dia através de técnicas validadas de regulação, como respiração 4-7-8 e pausas ativas na rotina.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="2">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-4">
+        <div>
+            <h3>Autocuidado</h3>
+            <p>Dicas práticas e exames essenciais de rastreamento preventivo (câncer de mama, de útero e colorretal). Cuidar de si é o primeiro passo para cuidar do outro.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="3">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-5">
+        <div>
+            <h3>Sinais de alerta para o acamado</h3>
+            <p>Identificação rápida de sintomas incomuns: febre sem motivo aparente, dor ao ser tocado, recusa alimentar súbita ou alterações visíveis na pele.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="4">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-1">
+        <div>
+            <h3>Manobra de desengasgo</h3>
+            <p>Passo a passo fundamental de primeiros socorros. Aprenda a aplicar a Manobra de Heimlich de forma segura e eficaz em situações de emergência.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="5">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-2">
+        <div>
+            <h3>Cuidados com o acamado</h3>
+            <p>Estratégias gerais de assistência domiciliar para garantir a segurança, o bem-estar e o conforto contínuo do paciente no leito.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="6">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-3">
+        <div>
+            <h3>Higiene (acamado e ambiente)</h3>
+            <p>A importância das rotinas rigorosas de limpeza íntima, manutenção da pele seca após trocas e desinfecção adequada do quarto.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="7">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-4">
+        <div>
+            <h3>Como evitar feridas (escaras)</h3>
+            <p>Prevenção de lesões por pressão através da mudança de decúbito a cada 2 horas e hidratação profunda das regiões de apoio ósseo.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="8">Saiba mais</a>
+    </div>
+
+    <div class="slide-card card-5">
+        <div>
+            <h3>Como evitar quedas</h3>
+            <p>Protocolos de segurança no leito: manutenção constante das grades elevadas, travas de segurança das rodas acionadas e apoio na movimentação.</p>
+        </div>
+        <a href="#" class="btn-ver-conteudo nav-tab-link" data-target="9">Saiba mais</a>
+    </div>
+
+</div>
+        </div>
+    </section>
+
+    <div id="main-content-area" class="hidden-area">
+        
+        <div class="regions-bar-wrapper">
+            <div class="regions-bar">
+                <div class="chunk c1"></div>
+                <div class="chunk c2"></div>
+                <div class="chunk c3"></div>
+                <div class="chunk c4"></div>
+            </div>
+        </div>
+
+        <main class="dynamic-content">
+            
+            <div class="content-panel" id="panel-0">
+                <div class="panel-header">
+                    <h2>Depressão: Sinais e Sintomas</h2>
+                    <p>De acordo com a USPSTF, o Transtorno Depressivo é caracterizado como a presença de sentimentos persistentes de tristeza, de intensidade leve a grave, ou falta de interesse em atividades cotidianas, com duração de pelo menos duas semanas.</p>
+                </div>
+                
+                <div class="flex-col-gap">
+                    <div class="info-box">
+                        <h3><i class="fas fa-brain"></i> Sinais de Alerta da Depressão</h3>
+                        <p class="mb-20">Fique atento se você se identificar com os seguintes sinais e sintomas:</p>
+                        
+                        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+                            <li><i class="fas fa-check-circle"></i> Tristeza persistentemente grave</li>
+                            <li><i class="fas fa-check-circle"></i> Desinteresse (anedonia)</li>
+                            <li><i class="fas fa-check-circle"></i> Irritabilidade</li>
+                            <li><i class="fas fa-check-circle"></i> Dificuldade de concentração</li>
+                            <li><i class="fas fa-check-circle"></i> Alterações no sono</li>
+                            <li><i class="fas fa-check-circle"></i> Alterações no apetite</li>
+                            <li><i class="fas fa-check-circle"></i> Diminuição da energia</li>
+                            <li><i class="fas fa-check-circle"></i> Pensamentos negativos</li>
+                            <li><i class="fas fa-check-circle"></i> Esquecimentos frequentes</li>
+                            <li><i class="fas fa-check-circle"></i> Isolamento social</li>
+                            <li><i class="fas fa-check-circle"></i> Abandono do autocuidado</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box" style="border-left: 5px solid #e11d48;">
+                        <h3 class="c-red"><i class="fas fa-triangle-exclamation"></i> Sinais de Alerta para o Acamado<span style="display:none;"></span></h3>
+                        <p class="mb-20">Os principais sinais de alerta para um acamado incluem mudanças repentinas de comportamento, febre, alterações na respiração e lesões de pele<span style="display:none;"></span>. Procure ajuda em caso de notar algum desses sinais e sintomas<span style="display:none;"></span>:</p>
+                        
+                        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+                            <li><i class="fas fa-circle-exclamation"></i> Lesões por pressão (escaras)<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Bolhas ou feridas<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Pele muito seca (desidratação)<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Falta de ar<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Respiração rápida ou ruidosa<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Tosse com secreção<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Urina escura ou com cheiro forte<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Engasgos frequentes<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Confusão mental e desorientação<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Febre alta ou persistente<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Pulso desregulado<span style="display:none;"></span></li>
+                            <li><i class="fas fa-circle-exclamation"></i> Fraqueza extrema<span style="display:none;"></span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box highlight-box">
+                        <h3><i class="fas fa-life-ring c-orange"></i> Quando e Onde Buscar Ajuda?</h3>
+                        <p class="mb-20">Se você ou alguém próximo apresentar esses sinais e sintomas continuamente por mais de 15 dias, afetando trabalho, estudos ou relações sociais, é fundamental procurar apoio.</p>
+                        
+                        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
+                            <li style="margin-bottom: 0;">
+                                <i class="fas fa-hospital" style="margin-top: 4px;"></i> 
+                                <div>
+                                    <strong>Unidade Básica de Saúde (UBS):</strong> 
+                                    Você pode agendar consultas com psicólogo na sua UBS.
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 0;">
+                                <i class="fas fa-phone-volume" style="margin-top: 4px;"></i> 
+                                <div>
+                                    <strong>Centro de Valorização da Vida (CVV):</strong> 
+                                    Em situações de crise ou pensamentos autodestrutivos, você pode contar com o apoio emocional do CVV, que atende 24 horas por dia, basta ligar no número 188.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-1">
+                <div class="panel-header">
+                    <h2>Síndrome de Burnout ou Síndrome do Esgotamento Profissional</h2>
+                    <p>De acordo com o Ministério da Saúde, a síndrome de Burnout ou Síndrome do esgotamento profissional é um distúrbio emocional com sintomas de exaustão extrema, estresse e esgotamento físico resultante de situações de trabalho desgastante, que demandam muita competitividade ou responsabilidade. A principal causa da doença é justamente o <strong>excesso de trabalho</strong>. Esta síndrome é comum justamente em profissionais que atuam diariamente sob pressão e com responsabilidades constantes.</p>
+                </div>
+                
+                <div class="flex-col-gap">
+                    <div class="info-box">
+                        <h3><i class="fas fa-battery-empty"></i> Sintomas Mais Comuns</h3>
+                        <p class="mb-20">A síndrome de Burnout ou, traduzindo do inglês “Síndrome da queima exterior” envolve diversos sintomas, como nervosismo, sofrimentos psicológicos, problemas físicos como dor de barriga, cansaço excessivo e tonturas. Como sintomas iniciais da doença, normalmente, temos o estresse e a falta de sair da cama ou de casa com constância. Outros sintomas são:</p>
+                        
+                        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+                            <li><i class="fas fa-arrow-right"></i> Cansaço excessivo físico e mental <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Dificuldade de concentração <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Sentimentos de incompetência <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Alterações no apetite <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Sentimentos de fracasso e insegurança <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Alteração nos batimentos cardíacos <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Insônia <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Negatividade constante <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Dores musculares <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Pressão alta <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Sentimentos de derrota e desesperança <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Fadiga <span style="display:none;"></span></li>
+                            <li><i class="fas fa-arrow-right"></i> Problemas gastrointestinais <span style="display:none;"></span></li>
+                        </ul>
+
+                        <hr style="margin: 25px 0; border: 0; border-top: 1px solid #e2e8f0;">
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                            <div>
+                                <h3 class="c-red"><i class="fas fa-exclamation-circle"></i> ATENÇÃO</h3>
+                                <p>Vale ressaltar que normalmente esses sintomas surgem de forma leve, mas que ao passar dos dias tendem a piorar. Por esse motivo, muitas pessoas acham que pode ser algo passageiro. Desse modo, para evitar complicações da doença, é essencial buscar apoio profissional assim que notar algum dos sinais.</p>
+                            </div>
+                            <div>
+                                <h3 class="c-red"><i class="fas fa-arrow-trend-down"></i> Sinais de Piora</h3>
+                                <p>Os sinais de piora podem surgir quando a pessoa não segue o tratamento adequado. Com isso, os sintomas se agravam e incluem perda total da motivação e distúrbios gastrointestinais. Nos casos mais graves, a pessoa pode desenvolver uma depressão, que muitas vezes pode ser indicativo de internação para avaliação detalhada e possíveis intervenções médicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box highlight-box">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                            
+                            <div>
+                                <h3><i class="fas fa-user-md c-orange"></i> Diagnóstico e Tratamento</h3>
+                                <p><strong>Diagnóstico:</strong> O diagnóstico é feito por um profissional especialista após análise clínica do paciente, sendo os profissionais mais indicados para detectar o problema e oriental a melhor forma de tratamento o <strong>Psicólogo</strong> e o <strong>Psiquiatra</strong>.</p><br>
+                                <p class="mt-10"><strong>Tratamento:</strong> O tratamento da síndrome de Burnout é feito basicamente com psicoterapia, podendo envolver medicamentos antidepressivos e/ou ansiolíticos. A atividade física regular e exercícios de relaxamento são fundamentais para controlar o estresse e os demais sintomas da doença.</p>
+                                
+                                <h3 class="mt-25"><i class="fas fa-hospital c-orange"></i> Quem pode me ajudar?</h3>
+                                <p>Amigos próximos e familiares podem ser bons pilares no início, ajudando a reconhecer sinais de que precisa de ajuda. Além dos profissionais de saúde (Psicólogo e o Psiquiatra), no SUS (Sistema Único de Saúde) a <strong>Rede de Atenção Psicossocial (RAPS)</strong> está apta a oferecer, de forma integral e gratuita, todo tratamento, desde o diagnóstico até o tratamento medicamentoso. Os <strong>Centros de Atenção Psicossocial</strong>, um dos serviços que compõe a RAPS, são os locais mais indicados.</p>
+                            </div>
+
+                            <div>
+                                <h3><i class="fas fa-shield-alt c-orange"></i> Prevenção</h3>
+                                <p class="mb-15">A principal forma de previnir essa síndrome é utilizar estratégias para reduzir o estresse a pressão no trabalho. A seguir, alguns exemplos de estratégias:</p><br>
+                                <ul>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Definir pequenos objetivos durante o dia <span style="display:none;"></span></li>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Participar de atividades de lazer <span style="display:none;"></span></li>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Fazer atividade física regulares <span style="display:none;"></span></li>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Conversar com alguém de confiança <span style="display:none;"></span></li>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Evitar contato com pessoas negativas <span style="display:none;"></span></li>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Evitar consumo de bebidas alcoólicas, cigarro e outras drogas <span style="display:none;"></span></li>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Não se automedicar <span style="display:none;"></span></li>
+                                    <li><i class="fas fa-check" style="color: #0284c7; margin-right: 8px;"></i> Descansar adequadamente, com boa noite de sono <span style="display:none;"></span></li>
+                                </ul>
+                                <div class="mt-15" style="background: #fdf6e3; border-left: 4px solid #0d9488; padding: 10px 15px;">
+                                    <p class="font-bold mb-0" style="color: #0f766e;">O cuidador também precisa ser cuidado! <span style="display:none;"></span></p>
+                                    <p style="font-size: 13px;">Você não está sozinho(a)! <span style="display:none;"></span></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-2">
+                <div class="panel-header">
+                    <h2>Como Lidar com Ansiedade e Exaustão</h2>
+                    <p>Estratégias práticas e técnicas validadas para o dia a dia.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box">
+                        <h3><i class="fas fa-heart-pulse"></i> Estratégias de Regulação</h3>
+                        <ul>
+                            <li><i class="fas fa-spa"></i> <div><strong>Técnica 4-7-8:</strong> Respire pelo nariz por 4s, segure o ar por 7s e solte pela boca lentamente por 8s.</div></li>
+                            <li><i class="fas fa-moon"></i> <div><strong>Higiene do Sono:</strong> Desligue todas as telas pelo menos 1 hora antes de dormir.</div></li>
+                            <li><i class="fas fa-hand-paper"></i> <div><strong>Definição de Limites:</strong> Aprenda a delegar funções e evite assumir todas as responsabilidades do cuidado sozinho.</div></li>
+                        </ul>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-lungs"></i>
+                        <p class="placeholder-title">Exercício Guiado de Respiração</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-3">
+                <div class="panel-header">
+                    <h2>Autocuidado e Exames de Rastreamento</h2>
+                    <p>Conteúdo por: Mari. Cuidar de si é o primeiro e mais importante passo.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box">
+                        <h3><i class="fas fa-shield-heart"></i> Prevenção Essencial</h3>
+                        <ul class="mb-25">
+                            <li><i class="fas fa-ribbon c-pink"></i> <div><strong>Câncer de Mama:</strong> Realização anual ou bienal da mamografia (conforme idade/médico).</div></li>
+                            <li><i class="fas fa-stethoscope"></i> <div><strong>Câncer de Útero:</strong> Papanicolau periódico para detecção precoce.</div></li>
+                            <li><i class="fas fa-apple-whole"></i> <div><strong>Câncer Colorretal:</strong> Exame de sangue oculto nas fezes.</div></li>
+                        </ul>
+                        <p>Dica de ouro: Separe ao menos 20 minutos do seu dia estritamente para VOCÊ (ler, ouvir música, relaxar).</p>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-calendar-check"></i>
+                        <p class="placeholder-title">Calendário Preventivo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-4">
+                <div class="panel-header">
+                    <h2>Sinais de Alerta para o Acamado</h2>
+                    <p>Conteúdo por: Nicole. Identificação precoce de intercorrências graves.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box mb-25">
+                        <h3 class="c-red"><i class="fas fa-triangle-exclamation"></i> Fique Atento!</h3>
+                        <p>Pacientes restritos ao leito podem não conseguir comunicar dor ou desconforto adequadamente. Observe atentamente:</p>
+                        <ul class="mt-25">
+                            <li><i class="fas fa-arrow-right"></i> Febre súbita sem foco infeccioso aparente.</li>
+                            <li><i class="fas fa-arrow-right"></i> Gemidos ou expressões faciais de dor durante a movimentação.</li>
+                            <li><i class="fas fa-arrow-right"></i> Manchas vermelhas fixas ou bolhas na pele (inicio de escaras).</li>
+                            <li><i class="fas fa-arrow-right"></i> Recusa hídrica e alimentar intensa.</li>
+                        </ul>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-eye"></i>
+                        <p class="placeholder-title">Tabela de Sinais Vitais / Alertas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-5">
+                <div class="panel-header">
+                    <h2>Manobra de Desengasgo (Heimlich)</h2>
+                    <p>Conteúdo por: Maria. Primeiros socorros que salvam vidas em segundos.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box">
+                        <h3><i class="fas fa-life-ring c-orange"></i> Como agir na emergência</h3>
+                        <p class="mb-20">Se o paciente não consegue tossir, falar ou respirar, e leva as mãos ao pescoço:</p>
+                        <ol style="margin-left: 20px; color: #475569; font-size: 15px; margin-bottom: 20px; line-height: 1.6;">
+                            <li>Posicione-se por trás da vítima.</li>
+                            <li>Abrace-a passando os braços ao redor do abdômen.</li>
+                            <li>Feche uma das mãos em punho e coloque-a logo acima do umbigo da vítima.</li>
+                            <li>Com a outra mão segurando o punho, faça um movimento de compressão forte em formato de "J" (para dentro e para cima).</li>
+                            <li>Repita até desobstruir.</li>
+                        </ol>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-kit-medical"></i>
+                        <p class="placeholder-title">Ilustração da Manobra de Heimlich</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-6">
+                <div class="panel-header">
+                    <h2>Cuidados Gerais com o Acamado</h2>
+                    <p>Conteúdo por: Ana Luísa. Orientações globais de assistência.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box">
+                        <h3><i class="fas fa-user-nurse"></i> Assistência Integrada</h3>
+                        <p>O conforto e a dignidade do paciente dependem de uma rotina estruturada.</p>
+                        <ul class="mt-25">
+                            <li><i class="fas fa-check-circle"></i> Mantenha o quarto sempre arejado e com iluminação natural.</li>
+                            <li><i class="fas fa-check-circle"></i> Estabeleça horários fixos para alimentação, medicação e higiene.</li>
+                            <li><i class="fas fa-check-circle"></i> Promova o uso de colchões especiais (caixa de ovo ou pneumático).</li>
+                            <li><i class="fas fa-check-circle"></i> Converse com o paciente informando tudo que será feito, mesmo se ele parecer não responder.</li>
+                        </ul>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-home"></i>
+                        <p class="placeholder-title">Vídeo: Organização do Quarto do Acamado</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-7">
+                <div class="panel-header">
+                    <h2>Higiene (Acamado e Ambiente)</h2>
+                    <p>Conteúdo por: Ana Luísa. A base da prevenção contra infecções.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box">
+                        <h3><i class="fas fa-hands-bubbles"></i> Rotina de Limpeza</h3>
+                        <ul>
+                            <li><i class="fas fa-arrow-right"></i> <div><strong>Banho no Leito:</strong> Deve ser feito por partes para não expor totalmente o paciente ao frio. Use sabonete neutro.</div></li>
+                            <li><i class="fas fa-arrow-right"></i> <div><strong>Higiene Íntima:</strong> Trocas frequentes de fralda são essenciais. Seque muito bem as dobrinhas da pele para evitar fungos.</div></li>
+                            <li><i class="fas fa-arrow-right"></i> <div><strong>Ambiente:</strong> O colchão e as roupas de cama devem estar esticados (sem vincos que machuquem). Poeira e excesso de móveis no quarto devem ser evitados.</div></li>
+                        </ul>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-shower"></i>
+                        <p class="placeholder-title">Vídeo: Técnicas de Banho no Leito</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-8">
+                <div class="panel-header">
+                    <h2>Como Evitar Feridas (Escaras)</h2>
+                    <p>Conteúdo por: Ana Luísa. Lesões por pressão são perigosas, porém altamente evitáveis.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box">
+                        <h3><i class="fas fa-bed"></i> Protocolo Anti-Escaras</h3>
+                        <p>O maior inimigo da pele do acamado é a pressão contínua no mesmo ponto (calcanhares, quadril, costas).</p>
+                        <ul class="mt-25">
+                            <li><i class="fas fa-clock c-orange"></i> <div><strong>O Relógio da Mudança:</strong> Altere a posição (decúbito) do paciente de 2 em 2 horas rigorosamente.</div></li>
+                            <li><i class="fas fa-tint c-orange"></i> <div><strong>Hidratação Extra:</strong> Use cremes hidratantes sem álcool no corpo todo, massageando para ativar a circulação, exceto em proeminências ósseas vermelhas.</div></li>
+                            <li><i class="fas fa-socks c-orange"></i> <div><strong>Apoios:</strong> Use travesseiros ou almofadas macias para elevar calcanhares e evitar que joelhos encostem um no outro.</div></li>
+                        </ul>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-sync"></i>
+                        <p class="placeholder-title">Relógio de Mudança de Decúbito</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-panel" id="panel-9">
+                <div class="panel-header">
+                    <h2>Como Evitar Quedas</h2>
+                    <p>Conteúdo por: Ana Luísa. Segurança absoluta na movimentação.</p>
+                </div>
+                <div class="grid-two-cols">
+                    <div class="info-box">
+                        <h3><i class="fas fa-person-falling-burst c-red"></i> Prevenção e Segurança</h3>
+                        <p>Quedas do leito podem causar fraturas graves. Siga o protocolo de segurança:</p>
+                        <ul class="mt-25">
+                            <li><i class="fas fa-shield-alt"></i> Manter sempre as grades laterais da cama elevadas e travadas.</li>
+                            <li><i class="fas fa-lock"></i> Se a cama for hospitalar, verificar sempre se as travas (freios) das rodinhas estão acionadas.</li>
+                            <li><i class="fas fa-hands"></i> Ao manipular o paciente (como dar banho ou trocar de lado), mantenha a grade elevada do lado oposto de onde você está.</li>
+                            <li><i class="fas fa-lightbulb"></i> Mantenha o quarto parcialmente iluminado durante a noite.</li>
+                        </ul>
+                    </div>
+                    <div class="media-placeholder">
+                        <i class="fas fa-bed-pulse"></i>
+                        <p class="placeholder-title">Equipamentos de Segurança no Quarto</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <strong>Portal do Cuidador</strong>
+        <p>Ana Luísa Cardoso Ameno<br>Maria Clara de Moura Oliveira<br>Mariana Macedo Lopes<br>Nicole Cunha Baia<br>Valquíria Dellorto Júnior</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
