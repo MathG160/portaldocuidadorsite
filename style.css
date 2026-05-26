@@ -177,37 +177,42 @@ a { text-decoration: none; transition: all 0.3s ease; }
 }
 
 /* ==========================================
-   CORREÇÃO: LOGOS DO CABEÇALHO (TAMANHO FIXO)
+   CORREÇÃO DEFINITIVA: CABEÇALHO (TAMANHO E RESPONSIVIDADE)
    ========================================== */
 .contagem-logo {
-    position: absolute;
+    position: absolute !important;
     left: 40px;
-    height: 65px !important; /* Força a altura exata */
+    height: 65px !important; /* Trava o tamanho no computador */
     max-height: 65px;
     width: auto !important;
-    max-width: 300px; /* Impede que a largura expanda */
+    max-width: 250px;
     object-fit: contain;
 }
 
 .header-logo {
-    height: 65px !important; /* Força a altura exata da logo da PUC */
+    height: 65px !important; /* Trava o tamanho da logo da PUC */
     max-height: 65px;
     width: auto !important;
     max-width: 150px;
     object-fit: contain;
 }
 
-/* Ajuste fino para não quebrar no celular */
+/* Ajustes específicos para telas menores (Celulares e Tablets) */
 @media (max-width: 900px) {
     .main-header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
+        flex-direction: column !important;
+        padding: 25px 15px !important;
     }
+    
     .contagem-logo {
-        position: static;
-        height: 50px !important;
-        max-height: 50px;
-        margin-bottom: 5px;
+        position: static !important; /* Remove a sobreposição no celular, colocando a imagem no fluxo normal */
+        margin-bottom: 15px;
+        height: 55px !important; /* Reduz um pouco o tamanho na tela do celular */
+    }
+    
+    .header-brand-wrapper {
+        flex-direction: column !important; /* Empilha a logo da PUC e o Título */
+        gap: 12px !important;
+        text-align: center;
     }
 }
