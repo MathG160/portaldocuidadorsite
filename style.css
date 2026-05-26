@@ -176,36 +176,38 @@ a { text-decoration: none; transition: all 0.3s ease; }
     gap: 20px; /* Espaço entre a logo e o texto */
 }
 
-.header-logo {
-    height: 60px; /* Altura ideal para visualização proporcional */
-    width: auto;
-    object-fit: contain;
-}
-
-/* Ajuste fino para telas menores (celulares) */
-@media (max-width: 900px) {
-    .header-brand-wrapper {
-        flex-direction: column;
-        gap: 12px;
-    }
-}
-
-/* -------------------------------------------
-   AJUSTES DAS LOGOS (CONTAGEM E PUC)
---------------------------------------------- */
+/* ==========================================
+   CORREÇÃO: LOGOS DO CABEÇALHO (TAMANHO FIXO)
+   ========================================== */
 .contagem-logo {
     position: absolute;
-    left: 40px; /* Distância da margem esquerda */
-    height: 60px; /* Mesma altura da logo da PUC para manter a harmonia */
-    width: auto;
+    left: 40px;
+    height: 65px !important; /* Força a altura exata */
+    max-height: 65px;
+    width: auto !important;
+    max-width: 300px; /* Impede que a largura expanda */
     object-fit: contain;
 }
 
-/* Ajuste fino para telas menores (celulares e tablets) */
+.header-logo {
+    height: 65px !important; /* Força a altura exata da logo da PUC */
+    max-height: 65px;
+    width: auto !important;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+/* Ajuste fino para não quebrar no celular */
 @media (max-width: 900px) {
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
     .contagem-logo {
-        position: static; /* Remove o posicionamento absoluto no celular */
-        margin-bottom: 10px;
-        height: 50px; /* Fica um pouco menor na tela do celular */
+        position: static;
+        height: 50px !important;
+        max-height: 50px;
+        margin-bottom: 5px;
     }
 }
