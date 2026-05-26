@@ -112,8 +112,51 @@ a { text-decoration: none; transition: all 0.3s ease; }
 .placeholder-title { font-size: 16px; font-weight: 600; color: #0f172a; margin-bottom: 5px; }
 
 /* 6. RODAPÉ */
-.footer { background: #0f172a; color: #94a3b8; padding: 40px; text-align: center; font-size: 13px; }
-.footer strong { color: #ffffff; font-size: 16px; display: block; margin-bottom: 5px; }
+.footer { 
+    background: #0f172a; 
+    color: #94a3b8; 
+    padding: 40px 20px; 
+    font-size: 13px; 
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer-content {
+    text-align: center;
+    flex: 1;
+}
+
+.footer strong { 
+    color: #ffffff; 
+    font-size: 16px; 
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+.footer-logo {
+    height: 110px; /* Aumentamos de 55px para 110px. Você pode aumentar mais se quiser! */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Ajuste de responsividade para telas menores (celulares) */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+    .footer-logo {
+        height: 80px; /* Reduz um pouco no celular para não ocupar a tela toda */
+    }
+}
 
 /* RESPONSIVIDADE */
 @media (max-width: 900px) {
@@ -144,5 +187,25 @@ a { text-decoration: none; transition: all 0.3s ease; }
     .header-brand-wrapper {
         flex-direction: column;
         gap: 12px;
+    }
+}
+
+/* -------------------------------------------
+   AJUSTES DAS LOGOS (CONTAGEM E PUC)
+--------------------------------------------- */
+.contagem-logo {
+    position: absolute;
+    left: 40px; /* Distância da margem esquerda */
+    height: 60px; /* Mesma altura da logo da PUC para manter a harmonia */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Ajuste fino para telas menores (celulares e tablets) */
+@media (max-width: 900px) {
+    .contagem-logo {
+        position: static; /* Remove o posicionamento absoluto no celular */
+        margin-bottom: 10px;
+        height: 50px; /* Fica um pouco menor na tela do celular */
     }
 }
