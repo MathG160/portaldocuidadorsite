@@ -1,5 +1,6 @@
 /* CONFIGURAÇÕES GERAIS */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+html { scroll-behavior: smooth; }
 body { background-color: #f4f7f6; color: #334155; overflow-x: hidden; line-height: 1.6; }
 a { text-decoration: none; transition: all 0.3s ease; }
 
@@ -8,6 +9,9 @@ a { text-decoration: none; transition: all 0.3s ease; }
 .flex-col-gap { display: flex; flex-direction: column; gap: 25px; }
 .mb-20 { margin-bottom: 20px; }
 .mb-25 { margin-bottom: 25px; }
+.mt-10 { margin-top: 10px; }
+.mt-15 { margin-top: 15px; }
+.mt-20 { margin-top: 20px; }
 .mt-25 { margin-top: 25px; }
 .c-red { color: #e11d48 !important; }
 .c-pink { color: #db2777 !important; }
@@ -21,7 +25,7 @@ a { text-decoration: none; transition: all 0.3s ease; }
 /* 2. CABEÇALHO */
 .main-header { 
     display: flex; 
-    justify-content: center; /* Esta é a linha que centraliza tudo na tela */
+    justify-content: center; 
     align-items: center; 
     padding: 25px 40px; 
     background: #ffffff; 
@@ -33,10 +37,38 @@ a { text-decoration: none; transition: all 0.3s ease; }
 .brand h1 { color: #0f172a; font-size: 26px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2; }
 .brand span { color: #0284c7; font-size: 13px; text-transform: uppercase; font-weight: 600; letter-spacing: 1.5px; margin-top: 2px; }
 
+/* Ajuste de alinhamento para a logo e o título */
+.header-brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+/* ==========================================
+   CORREÇÃO DEFINITIVA: CABEÇALHO (TAMANHO E RESPONSIVIDADE)
+   ========================================== */
+.contagem-logo {
+    position: absolute !important;
+    left: 40px;
+    height: 65px !important; 
+    max-height: 65px;
+    width: auto !important;
+    max-width: 250px;
+    object-fit: contain;
+}
+
+.header-logo {
+    height: 65px !important; 
+    max-height: 65px;
+    width: auto !important;
+    max-width: 150px;
+    object-fit: contain;
+}
+
 /* 3. BANNER CENTRAL (CARROSSEL) */
 .hero-banner-container { position: relative; width: 100%; height: 500px; background: #cbd5e1; background-image: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.4)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1920'); background-size: cover; background-position: center; display: flex; align-items: center; overflow: hidden; }
 .slider-wrapper { position: relative; z-index: 2; width: 100%; padding: 0 50px; }
-.slider-track { display: flex; gap: 25px; cursor: grab; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+.slider-track { display: flex; gap: 25px; cursor: grab; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); padding-bottom: 10px; }
 .slider-track:active { cursor: grabbing; }
 
 /* CARDS DO CARROSSEL */
@@ -51,7 +83,6 @@ a { text-decoration: none; transition: all 0.3s ease; }
 .slide-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; margin-top: 15px;}
 .slide-card ul { list-style-position: inside; font-size: 14px; opacity: 0.95; line-height: 1.6; margin-bottom: 10px; }
 .slide-card p { font-size: 14px; opacity: 0.95; line-height: 1.6; }
-.author-tag { font-size: 12px; text-transform: uppercase; font-weight: 700; background: rgba(255,255,255,0.25); padding: 4px 10px; border-radius: 6px; align-self: flex-start; letter-spacing: 0.5px; }
 
 /* BOTÕES DO CARROSSEL */
 .btn-ver-conteudo { align-self: flex-start; background: #ffffff; color: #0f172a; padding: 10px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -141,27 +172,35 @@ a { text-decoration: none; transition: all 0.3s ease; }
 }
 
 .footer-logo {
-    height: 110px; /* Aumentamos de 55px para 110px. Você pode aumentar mais se quiser! */
+    height: 80px; 
     width: auto;
     object-fit: contain;
 }
 
-/* Ajuste de responsividade para telas menores (celulares) */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        gap: 25px;
-        text-align: center;
-    }
-    .footer-logo {
-        height: 80px; /* Reduz um pouco no celular para não ocupar a tela toda */
-    }
-}
 
-/* RESPONSIVIDADE */
+/* ==========================================
+   AJUSTES RESPONSIVOS (CELULARES E TABLETS)
+   ========================================== */
 @media (max-width: 900px) {
     .grid-two-cols { grid-template-columns: 1fr; gap: 30px; }
-    .main-header { flex-direction: column; gap: 15px; text-align: center; padding: 20px; }
+    
+    .main-header {
+        flex-direction: column !important;
+        padding: 25px 15px !important;
+    }
+    
+    .contagem-logo {
+        position: static !important; 
+        margin-bottom: 15px;
+        height: 55px !important; 
+    }
+    
+    .header-brand-wrapper {
+        flex-direction: column !important; 
+        gap: 12px !important;
+        text-align: center;
+    }
+    
     .hero-banner-container { height: auto; padding: 50px 0; }
     .slider-wrapper { padding: 0 20px; }
     .slide-card { min-width: 300px; width: 300px; height: auto; padding: 25px; }
@@ -169,50 +208,13 @@ a { text-decoration: none; transition: all 0.3s ease; }
     .regions-bar-wrapper { padding: 20px 20px 0 20px; }
 }
 
-/* Ajuste de alinhamento para a logo e o título */
-.header-brand-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Espaço entre a logo e o texto */
-}
-
-/* ==========================================
-   CORREÇÃO DEFINITIVA: CABEÇALHO (TAMANHO E RESPONSIVIDADE)
-   ========================================== */
-.contagem-logo {
-    position: absolute !important;
-    left: 40px;
-    height: 65px !important; /* Trava o tamanho no computador */
-    max-height: 65px;
-    width: auto !important;
-    max-width: 250px;
-    object-fit: contain;
-}
-
-.header-logo {
-    height: 65px !important; /* Trava o tamanho da logo da PUC */
-    max-height: 65px;
-    width: auto !important;
-    max-width: 150px;
-    object-fit: contain;
-}
-
-/* Ajustes específicos para telas menores (Celulares e Tablets) */
-@media (max-width: 900px) {
-    .main-header {
-        flex-direction: column !important;
-        padding: 25px 15px !important;
-    }
-    
-    .contagem-logo {
-        position: static !important; /* Remove a sobreposição no celular, colocando a imagem no fluxo normal */
-        margin-bottom: 15px;
-        height: 55px !important; /* Reduz um pouco o tamanho na tela do celular */
-    }
-    
-    .header-brand-wrapper {
-        flex-direction: column !important; /* Empilha a logo da PUC e o Título */
-        gap: 12px !important;
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 25px;
         text-align: center;
+    }
+    .footer-logo {
+        height: 70px; 
     }
 }

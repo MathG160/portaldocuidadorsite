@@ -7,14 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
  * Módulo 1: Controlador de Exibição dos Painéis 
  */
 function initContentController() {
-    // Escuta apenas os botões presentes dentro dos cards
     const navLinks = document.querySelectorAll('.nav-tab-link');
     const panels = document.querySelectorAll('.content-panel');
     const mainContentArea = document.getElementById('main-content-area'); 
 
     function showPanel(targetIndex) {
         
-        // 1. REVELA A ÁREA INFERIOR (Se for o primeiro clique do usuário)
         let isOpeningNow = false;
         if (mainContentArea.classList.contains('hidden-area')) {
             mainContentArea.classList.remove('hidden-area');
@@ -22,7 +20,6 @@ function initContentController() {
             isOpeningNow = true; 
         }
         
-        // 2. Esconde todos os painéis ativamente exibidos
         panels.forEach(panel => {
             panel.classList.remove('show');
             setTimeout(() => {
@@ -30,7 +27,6 @@ function initContentController() {
             }, 300); 
         });
 
-        // 3. Ativa o painel exato referente ao card clicado
         setTimeout(() => {
             const targetPanel = document.getElementById(`panel-${targetIndex}`);
             if (targetPanel) {
@@ -39,20 +35,18 @@ function initContentController() {
             }
         }, 300);
 
-        // 4. Scroll Suave até a seção revelada
         const scrollDelay = isOpeningNow ? 150 : 0; 
         
         setTimeout(() => {
             const element = document.getElementById('main-content-area');
             if (element) {
-                const yOffset = -30; // Espaço do topo da tela para a barra cor
+                const yOffset = -30;
                 const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
                 window.scrollTo({top: y, behavior: 'smooth'});
             }
         }, scrollDelay);
     }
 
-    // Registra cliques dos botões nos cards
     navLinks.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault(); 
@@ -63,7 +57,7 @@ function initContentController() {
 }
 
 /**
- * Módulo 2: Controlador do Carrossel (Swipe)
+ * Módulo 2: Controlador do Carrossel (Swipe e Mobile Fix)
  */
 function initDraggableCarousel() {
     const track = document.getElementById('sliderTrack');
@@ -77,7 +71,13 @@ function initDraggableCarousel() {
     let currentTranslate = 0;
     let prevTranslate = 0;
     let animationID;
-    const cardWidth = 385; // Largura do card + gap (360 + 25)
+
+    // Função que calcula o pulo dinâmico para garantir que funcione no PC e no Celular
+    function getCardWidth() {
+        const card = document.querySelector('.slide-card');
+        const gap = 25; // Gap fixo do flexbox
+        return card ? card.offsetWidth + gap : 385;
+    }
 
     track.addEventListener('mousedown', startDrag);
     track.addEventListener('mousemove', drag);
@@ -108,8 +108,10 @@ function initDraggableCarousel() {
         track.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)'; 
 
         const movedBy = currentTranslate - prevTranslate;
-        if (movedBy < -50) currentTranslate = prevTranslate - cardWidth;
-        else if (movedBy > 50) currentTranslate = prevTranslate + cardWidth;
+        const jumpWidth = getCardWidth();
+
+        if (movedBy < -50) currentTranslate = prevTranslate - jumpWidth;
+        else if (movedBy > 50) currentTranslate = prevTranslate + jumpWidth;
         else currentTranslate = prevTranslate;
         
         clampTranslate();
@@ -125,6 +127,7 @@ function initDraggableCarousel() {
     }
 
     function clampTranslate() {
+        // Usa as bordas da tela para não arrastar para o infinito
         const maxScroll = -(track.scrollWidth - track.parentElement.clientWidth + 25);
         if (currentTranslate > 0) currentTranslate = 0;
         if (currentTranslate < maxScroll) currentTranslate = maxScroll;
@@ -134,7 +137,10 @@ function initDraggableCarousel() {
     }
 
     if(nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', () => { currentTranslate -= cardWidth; clampTranslate(); });
-        prevBtn.addEventListener('click', () => { currentTranslate += cardWidth; clampTranslate(); });
+        nextBtn.addEventListener('click', () => { currentTranslate -= getCardWidth(); clampTranslate(); });
+        prevBtn.addEventListener('click', () => { currentTranslate += getCardWidth(); clampTranslate(); });
     }
+
+    // Recalcula se o usuário girar a tela do celular
+    window.addEventListener('resize', clampTranslate);
 }
