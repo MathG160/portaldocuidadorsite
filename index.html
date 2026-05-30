@@ -876,6 +876,60 @@
         </main>
     </div>
 
+    <section style="padding: 60px 20px; background-color: #f4f7f6;">
+        <div id="cep-section" class="cep-container">
+            <h3><i class="fas fa-map-marker-alt" style="color: #ea580c; margin-right: 10px;"></i>Você é do Eldorado e precisa de apoio?</h3>
+            <p>Informe seu CEP abaixo para confirmarmos se o seu endereço é atendido pela UBS Eldorado.</p>
+            
+            <div class="input-group">
+                <input type="text" id="cep-input" class="form-control" placeholder="Ex: 31540-390" maxlength="9">
+                <button class="btn-primary btn-inline" onclick="verificarCEP()">Verificar Cobertura</button>
+            </div>
+            <p id="cep-msg" style="display: none;"></p>
+        </div>
+
+        <div id="form-section" class="form-container" style="display: none; margin-top: 30px;">
+            <h3><i class="fas fa-clipboard-check" style="color: #0d9488; margin-right: 10px;"></i>Ótimo! Sua região é atendida.</h3>
+            <p>Preencha os dados abaixo para que nossa equipe entre em contato o mais breve possível.</p>
+            
+            <form id="atendimento-form" onsubmit="enviarFormulario(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" class="form-control" placeholder="Digite seu nome" required
+                               pattern="^\s*[a-zA-ZÀ-ÿ]+(?:\s+[a-zA-ZÀ-ÿ]+)+\s*$"
+                               oninvalid="this.setCustomValidity('Por favor, informe seu nome e sobrenome completo.')"
+                               oninput="this.setCustomValidity('')">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Celular / WhatsApp</label>
+                        <input type="tel" id="telefone" class="form-control" placeholder="(31) 99999-9999" maxlength="15" required
+                               pattern="^\(\d{2}\)\s\d{4,5}-\d{4}$"
+                               oninvalid="this.setCustomValidity('Por favor, informe um número válido com DDD.')"
+                               oninput="this.setCustomValidity('')">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" class="form-control" placeholder="seuemail@exemplo.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="endereco">Endereço Completo</label>
+                    <input type="text" id="endereco" class="form-control" placeholder="Rua, Número, Bairro, Complemento" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">Como podemos te ajudar?</label>
+                    <textarea id="mensagem" class="form-control" placeholder="Descreva brevemente sua necessidade..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Enviar Solicitação</button>
+            </form>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-container">
             <img src="contagem-brasao.png" alt="Brasão de Contagem" class="footer-logo" style="height: 80px; width: auto; max-width: 200px;">
@@ -888,6 +942,13 @@
             <img src="puc-logo.ico" alt="Logo PUC Minas" class="footer-logo" style="height: 80px; width: auto; max-width: 200px;">
         </div>
     </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("dVZUlsfUekJe7BVon");
+        })();
+    </script>
     
     <script src="script.js" defer></script>
 </body>

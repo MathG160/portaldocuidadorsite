@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initContentController();
     initDraggableCarousel();
+    initMasks(); // Inicia as formatações automáticas de CEP e Telefone
 });
 
 /**
@@ -72,10 +73,9 @@ function initDraggableCarousel() {
     let prevTranslate = 0;
     let animationID;
 
-    // Função que calcula o pulo dinâmico para garantir que funcione no PC e no Celular
     function getCardWidth() {
         const card = document.querySelector('.slide-card');
-        const gap = 25; // Gap fixo do flexbox
+        const gap = 25; 
         return card ? card.offsetWidth + gap : 385;
     }
 
@@ -127,7 +127,6 @@ function initDraggableCarousel() {
     }
 
     function clampTranslate() {
-        // Usa as bordas da tela para não arrastar para o infinito
         const maxScroll = -(track.scrollWidth - track.parentElement.clientWidth + 25);
         if (currentTranslate > 0) currentTranslate = 0;
         if (currentTranslate < maxScroll) currentTranslate = maxScroll;
@@ -141,6 +140,122 @@ function initDraggableCarousel() {
         prevBtn.addEventListener('click', () => { currentTranslate += getCardWidth(); clampTranslate(); });
     }
 
-    // Recalcula se o usuário girar a tela do celular
     window.addEventListener('resize', clampTranslate);
+}
+
+/**
+ * Módulo 3: Máscaras Automáticas (Formatação em tempo real)
+ */
+function initMasks() {
+    // Máscara do CEP
+    const campoCep = document.getElementById('cep-input');
+    if (campoCep) {
+        campoCep.addEventListener('input', function(e) {
+            let valor = e.target.value.replace(/\D/g, ''); // Remove tudo que não for número
+            if (valor.length > 5) {
+                valor = valor.replace(/^(\d{5})(\d)/, '$1-$2'); // Insere o traço
+            }
+            e.target.value = valor;
+        });
+    }
+
+    // Máscara do Celular / WhatsApp
+    const campoTelefone = document.getElementById('telefone');
+    if (campoTelefone) {
+        campoTelefone.addEventListener('input', function(e) {
+            let valor = e.target.value.replace(/\D/g, ''); 
+            
+            // Aplica a formatação: (XX) XXXXX-XXXX
+            if (valor.length > 10) {
+                valor = valor.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (valor.length > 5) {
+                valor = valor.replace(/^(\d{2})(\d{4,5})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (valor.length > 2) {
+                valor = valor.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else {
+                valor = valor.replace(/^(\d*)/, '($1');
+                if (valor === '(') valor = ''; // Limpa se apagar tudo
+            }
+            e.target.value = valor;
+        });
+    }
+}
+
+
+// =========================================================================
+// MÓDULO 4: VALIDAÇÃO DE CEP E ENVIO DE E-MAIL (ESCOPO GLOBAL)
+// =========================================================================
+
+// Lista de CEPs válidos (Apenas números)
+const cepsValidos = ['31540390', '30120050']; 
+
+function verificarCEP() {
+    const cepInput = document.getElementById('cep-input').value;
+    const cepLimpo = cepInput.replace(/\D/g, ''); // Remove traços
+    
+    const cepMsg = document.getElementById('cep-msg');
+    const formSection = document.getElementById('form-section');
+
+    // Valida se tem 8 dígitos (CEP completo) antes de verificar
+    if (cepLimpo.length !== 8) {
+        cepMsg.textContent = "Por favor, digite um CEP válido com 8 dígitos.";
+        cepMsg.style.display = 'block';
+        formSection.style.display = 'none';
+        return;
+    }
+
+    if (cepsValidos.includes(cepLimpo)) {
+        // CEP Coberto!
+        cepMsg.style.display = 'none';
+        formSection.style.display = 'block';
+        // Desce a tela suavemente até o formulário
+        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        // CEP Não Coberto :(
+        formSection.style.display = 'none';
+        cepMsg.textContent = "Desculpe, não identificamos cobertura da UBS Eldorado para o CEP informado.";
+        cepMsg.style.display = 'block';
+    }
+}
+
+// --- ENVIO DO FORMULÁRIO (EmailJS) ---
+function enviarFormulario(event) {
+    event.preventDefault(); 
+    
+    // Efeito visual no botão
+    const btnSubmit = document.querySelector('#atendimento-form button[type="submit"]');
+    const textoOriginal = btnSubmit.innerHTML;
+    btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    btnSubmit.disabled = true;
+
+    // Coleta os dados (Neste ponto, o HTML já garantiu que tudo está válido com os balõezinhos!)
+    const parametrosTemplate = {
+        nome: document.getElementById('nome').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        telefone: document.getElementById('telefone').value,
+        endereco: document.getElementById('endereco').value,
+        mensagem: document.getElementById('mensagem').value,
+        cep: document.getElementById('cep-input').value
+    };
+
+    const serviceID = "service_48f4du9"; 
+    const templateID = "template_yujf407"; 
+
+    emailjs.send(serviceID, templateID, parametrosTemplate)
+        .then(function(resposta) {
+            alert("Sucesso! Sua solicitação foi enviada. Nossa equipe entrará em contato em breve.");
+            document.getElementById('atendimento-form').reset(); 
+            document.getElementById('form-section').style.display = 'none'; 
+            document.getElementById('cep-input').value = ''; 
+            
+            // Sobe a tela de volta para a busca de CEP
+            document.getElementById('cep-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, function(erro) {
+            alert("Ocorreu um erro ao enviar. Por favor, tente novamente mais tarde.");
+            console.log("Erro EmailJS:", erro);
+        })
+        .finally(function() {
+            btnSubmit.innerHTML = textoOriginal;
+            btnSubmit.disabled = false;
+        });
 }
