@@ -186,17 +186,20 @@ function initMasks() {
 // MÓDULO 4: VALIDAÇÃO DE CEP E ENVIO DE E-MAIL (ESCOPO GLOBAL)
 // =========================================================================
 
-// Lista de CEPs válidos (Apenas números)
-const cepsValidos = ['31540390', '30120050']; 
+// Lista de prefixos de CEP válidos (Abrangendo Eldorado, Novo Eldorado, Glória e Av. João César)
+const prefixosCepValidos = [
+    '32010', // Av. João César de Oliveira e arredores
+    '32310', '32311', '32312', '32313', '32314', '32315', // Região do Eldorado
+    '32340', '32341' // Região do Glória e Novo Eldorado
+];
 
 function verificarCEP() {
     const cepInput = document.getElementById('cep-input').value;
-    const cepLimpo = cepInput.replace(/\D/g, ''); // Remove traços
+    const cepLimpo = cepInput.replace(/\D/g, ''); 
     
     const cepMsg = document.getElementById('cep-msg');
     const formSection = document.getElementById('form-section');
 
-    // Valida se tem 8 dígitos (CEP completo) antes de verificar
     if (cepLimpo.length !== 8) {
         cepMsg.textContent = "Por favor, digite um CEP válido com 8 dígitos.";
         cepMsg.style.display = 'block';
@@ -204,14 +207,14 @@ function verificarCEP() {
         return;
     }
 
-    if (cepsValidos.includes(cepLimpo)) {
-        // CEP Coberto!
+    // Verifica se o CEP digitado começa com algum dos prefixos da nossa lista
+    const cepValido = prefixosCepValidos.some(prefixo => cepLimpo.startsWith(prefixo));
+
+    if (cepValido) {
         cepMsg.style.display = 'none';
         formSection.style.display = 'block';
-        // Desce a tela suavemente até o formulário
         formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-        // CEP Não Coberto :(
         formSection.style.display = 'none';
         cepMsg.textContent = "Desculpe, não identificamos cobertura da UBS Eldorado para o CEP informado.";
         cepMsg.style.display = 'block';
@@ -222,13 +225,11 @@ function verificarCEP() {
 function enviarFormulario(event) {
     event.preventDefault(); 
     
-    // Efeito visual no botão
     const btnSubmit = document.querySelector('#atendimento-form button[type="submit"]');
     const textoOriginal = btnSubmit.innerHTML;
     btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
     btnSubmit.disabled = true;
 
-    // Coleta os dados (Neste ponto, o HTML já garantiu que tudo está válido com os balõezinhos!)
     const parametrosTemplate = {
         nome: document.getElementById('nome').value.trim(),
         email: document.getElementById('email').value.trim(),
@@ -238,8 +239,8 @@ function enviarFormulario(event) {
         cep: document.getElementById('cep-input').value
     };
 
-    const serviceID = "service_48f4du9"; 
-    const templateID = "template_yujf407"; 
+    const serviceID = "service_8i8nvqb"; 
+    const templateID = "template_21d99c8"; 
 
     emailjs.send(serviceID, templateID, parametrosTemplate)
         .then(function(resposta) {
@@ -248,7 +249,6 @@ function enviarFormulario(event) {
             document.getElementById('form-section').style.display = 'none'; 
             document.getElementById('cep-input').value = ''; 
             
-            // Sobe a tela de volta para a busca de CEP
             document.getElementById('cep-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, function(erro) {
             alert("Ocorreu um erro ao enviar. Por favor, tente novamente mais tarde.");
