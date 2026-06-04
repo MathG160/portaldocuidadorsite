@@ -186,12 +186,26 @@ function initMasks() {
 // MÓDULO 4: VALIDAÇÃO DE CEP E ENVIO DE E-MAIL (ESCOPO GLOBAL)
 // =========================================================================
 
-// Lista de prefixos de CEP válidos (Abrangendo Eldorado, Novo Eldorado, Glória e Av. João César)
-const prefixosCepValidos = [
-    '32010', // Av. João César de Oliveira e arredores
-    '32310', '32311', '32312', '32313', '32314', '32315', // Região do Eldorado
-    '32340', '32341' // Região do Glória e Novo Eldorado
-];
+// Whitelist exata de CEPs atendidos pela UBS Eldorado (armazenada em um Set para performance)
+const cepsValidosEldorado = new Set([
+    '32010130', '32015020', '32015286', '32015690', '32016040', '32025012', 
+    '32025018', '32025035', '32040010', '32040320', '32041002', '32044140', 
+    '32044250', '32046278', '32046292', '32050365', '32050375', '32051060', 
+    '32051072', '32052042', '32055070', '32060295', '32062050', '32064600', 
+    '32065442', '32073170', '32110133', '32110138', '32113345', '32113482', 
+    '32140200', '32140540', '32140683', '32145320', '32145380', '32145550', 
+    '32150370', '32220102', '32220530', '32223340', '32230110', '32230150', 
+    '32235230', '32241003', '32265390', '32280330', '32280600', '32285090', 
+    '32310210', '32310370', '32310430', '32310440', '32310450', '32310470', 
+    '32310475', '32310480', '32310490', '32310500', '32310510', '32310520', 
+    '32310530', '32310550', '32310560', '32310670', '32310675', '32315040', 
+    '32315170', '32315172', '32340010', '32340020', '32340030', '32340040', 
+    '32340050', '32340060', '32340070', '32340080', '32340090', '32340100', 
+    '32340110', '32340120', '32340130', '32340140', '32340160', '32340170', 
+    '32340640', '32341010', '32341020', '32341030', '32341050', '32341060', 
+    '32341070', '32341080', '32341110', '32341130', '32341140', '32341180', 
+    '32341420', '32341485', '32341610', '32342080', '32342100', '32371600'
+]);
 
 function verificarCEP() {
     const cepInput = document.getElementById('cep-input').value;
@@ -207,8 +221,8 @@ function verificarCEP() {
         return;
     }
 
-    // Verifica se o CEP digitado começa com algum dos prefixos da nossa lista
-    const cepValido = prefixosCepValidos.some(prefixo => cepLimpo.startsWith(prefixo));
+    // Busca direta O(1) no Set de CEPs permitidos
+    const cepValido = cepsValidosEldorado.has(cepLimpo);
 
     if (cepValido) {
         cepMsg.style.display = 'none';
